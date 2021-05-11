@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from staff.views import Employee, GetLevel
 
 urlpatterns = [
-    path('', admin.site.urls),
+    path('admin/', admin.site.urls),
+    path('api/', Employee.as_view()),
+    path('api/<str:level>', GetLevel.as_view()),
 ]

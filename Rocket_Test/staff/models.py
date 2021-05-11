@@ -10,7 +10,9 @@ class EmployeeModel(models.Model):
     date_of_receipt = models.DateField(verbose_name='Дата приёма на работу')
     salary = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Заработная плата')
     total_paid = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Всего выплачено')
-    chief = models.ForeignKey('EmployeeModel', on_delete=models.PROTECT, blank=True, null=True)
+    chief = models.ForeignKey('EmployeeModel', on_delete=models.PROTECT, blank=True, null=True, verbose_name='Начальник')
+    LEVELS = (('P1', 'P1'), ('P2', 'P2'), ('P3', 'P3'), ('P4', 'P4'),)
+    level = models.CharField(max_length=2, choices=LEVELS, verbose_name='Уровень', null=True)
 
     class Meta:
         verbose_name_plural = 'Сотрудники'
