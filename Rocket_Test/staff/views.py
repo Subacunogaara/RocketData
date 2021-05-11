@@ -17,7 +17,7 @@ class Employee(APIView):
 
 class GetLevel(APIView):
 
-    def get(request, level):
+    def get(self, request, level):
         objects = EmployeeModel.objects.filter(level=level)
-        serializer = EmployeeSerializer(objects)
+        serializer = EmployeeSerializer(objects, many=True)
         return Response(serializer.data)

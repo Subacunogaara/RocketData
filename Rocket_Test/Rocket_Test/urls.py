@@ -19,6 +19,7 @@ from staff.views import Employee, GetLevel
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/<str:level>/', GetLevel.as_view()),
     path('api/', Employee.as_view()),
-    path('api/<str:level>', GetLevel.as_view()),
+
 ]
